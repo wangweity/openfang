@@ -491,6 +491,9 @@ pub struct AgentManifest {
     /// Tool blocklist — these tools are excluded (applied after allowlist).
     #[serde(default, deserialize_with = "crate::serde_compat::vec_lenient")]
     pub tool_blocklist: Vec<String>,
+    /// Whether to auto-approve all tool executions for this agent.
+    #[serde(default)]
+    pub auto_approve: bool,
 }
 
 fn default_true() -> bool {
@@ -525,6 +528,7 @@ impl Default for AgentManifest {
             exec_policy: None,
             tool_allowlist: Vec::new(),
             tool_blocklist: Vec::new(),
+            auto_approve: false,
         }
     }
 }
@@ -782,6 +786,7 @@ mod tests {
             exec_policy: None,
             tool_allowlist: Vec::new(),
             tool_blocklist: Vec::new(),
+            auto_approve: false,
         };
         let json = serde_json::to_string(&manifest).unwrap();
         let deserialized: AgentManifest = serde_json::from_str(&json).unwrap();

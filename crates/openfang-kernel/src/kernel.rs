@@ -3277,6 +3277,7 @@ impl OpenFangKernel {
                 None
             },
             tool_blocklist: Vec::new(),
+            auto_approve: false,
             // Custom profile avoids ToolProfile-based expansion overriding the
             // explicit tool list.
             profile: if !def.tools.is_empty() {
@@ -6053,12 +6054,17 @@ impl KernelHandle for OpenFangKernel {
     ) -> Result<bool, String> {
         use openfang_types::approval::{ApprovalDecision, ApprovalRequest as TypedRequest};
 
-        // Hand agents are curated trusted packages — auto-approve tool execution.
-        // Check if this agent has a "hand:" tag indicating it was spawned by activate_hand().
+        // Hand agents and agents with auto_approve=true are auto-approved.
         if let Ok(aid) = agent_id.parse::<AgentId>() {
             if let Some(entry) = self.registry.get(aid) {
+                // Check hand tag
                 if entry.tags.iter().any(|t| t.starts_with("hand:")) {
                     info!(agent_id, tool_name, "Auto-approved for hand agent");
+                    return Ok(true);
+                }
+                // Check explicit auto_approve manifest field
+                if entry.manifest.auto_approve {
+                    info!(agent_id, tool_name, "Auto-approved via agent manifest");
                     return Ok(true);
                 }
             }
@@ -6436,6 +6442,7 @@ mod tests {
             exec_policy: None,
             tool_allowlist: vec![],
             tool_blocklist: vec![],
+            auto_approve: false,
         };
         manifest.capabilities.tools = vec!["file_read".to_string(), "web_fetch".to_string()];
         manifest.capabilities.agent_spawn = true;
@@ -6473,6 +6480,7 @@ mod tests {
             exec_policy: None,
             tool_allowlist: vec![],
             tool_blocklist: vec![],
+            auto_approve: false,
         }
     }
 
@@ -6648,5 +6656,43 @@ mod tests {
         );
 
         kernel.shutdown();
+    }
+}
+
+
+
+
+#[cfg(test)]
+mod auto_approve_tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_request_approval_auto_approve_manifest() {
+        let config = KernelConfig::default();
+        let kernel = OpenFangKernel::boot_with_config(config).unwrap();
+
+        let mut manifest = AgentManifest::default();
+        manifest.name = "auto-agent".to_string();
+        manifest.auto_approve = true;
+
+        let agent_id = kernel.spawn_agent(manifest).unwrap();
+
+        let approved = kernel.request_approval(&agent_id.0.to_string(), "shell_exec", "test").await.unwrap();
+        assert!(approved);
+    }
+
+    #[tokio::test]
+    async fn test_request_approval_hand_tag() {
+        let config = KernelConfig::default();
+        let kernel = OpenFangKernel::boot_with_config(config).unwrap();
+
+        let mut manifest = AgentManifest::default();
+        manifest.name = "hand-agent".to_string();
+        manifest.tags = vec!["hand:researcher".to_string()];
+
+        let agent_id = kernel.spawn_agent(manifest).unwrap();
+
+        let approved = kernel.request_approval(&agent_id.0.to_string(), "shell_exec", "test").await.unwrap();
+        assert!(approved);
     }
 }
