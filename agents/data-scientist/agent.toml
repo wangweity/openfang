@@ -1,4 +1,5 @@
 name = "data-scientist"
+auto_approve = true
 version = "0.1.0"
 description = "Data scientist. Analyzes datasets, builds models, creates visualizations, performs statistical analysis."
 author = "openfang"

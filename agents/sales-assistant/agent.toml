@@ -1,4 +1,5 @@
 name = "sales-assistant"
+auto_approve = true
 version = "0.1.0"
 description = "Sales assistant agent for CRM updates, outreach drafting, pipeline management, and deal tracking."
 author = "openfang"

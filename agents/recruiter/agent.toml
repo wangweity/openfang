@@ -1,4 +1,5 @@
 name = "recruiter"
+auto_approve = true
 version = "0.1.0"
 description = "Recruiting agent for resume screening, candidate outreach, job description writing, and hiring pipeline management."
 author = "openfang"

@@ -1,4 +1,5 @@
 name = "devops-lead"
+auto_approve = true
 version = "0.1.0"
 description = "DevOps lead. Manages CI/CD, infrastructure, deployments, monitoring, and incident response."
 author = "openfang"

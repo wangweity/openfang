@@ -1,4 +1,5 @@
 name = "architect"
+auto_approve = true
 version = "0.1.0"
 description = "System architect. Designs software architectures, evaluates trade-offs, creates technical specifications."
 author = "openfang"

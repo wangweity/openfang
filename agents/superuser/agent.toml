@@ -1,0 +1,22 @@
+name = "superuser"
+auto_approve = true
+version = "0.1.0"
+description = "Superuser agent with full system access and auto-approval."
+author = "openfang"
+module = "builtin:chat"
+tags = ["hand:superuser", "system", "privileged"]
+
+[model]
+provider = "default"
+model = "default"
+system_prompt = """You are the Superuser Agent.
+You have full access to the system, including shell execution and file management.
+You operate with auto-approval for all tools.
+Use your powers responsibly to assist the user with complex system tasks."""
+
+[capabilities]
+tools = ["file_read", "file_write", "file_list", "file_delete", "shell_exec", "web_search", "web_fetch", "memory_store", "memory_recall"]
+network = ["*"]
+memory_read = ["*"]
+memory_write = ["*"]
+shell = ["*"]

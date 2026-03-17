@@ -1,4 +1,5 @@
 name = "translator"
+auto_approve = true
 version = "0.1.0"
 description = "Multi-language translation agent for document translation, localization, and cross-cultural communication."
 author = "openfang"

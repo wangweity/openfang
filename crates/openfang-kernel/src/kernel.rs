@@ -6662,6 +6662,7 @@ mod tests {
 
 
 
+
 #[cfg(test)]
 mod auto_approve_tests {
     use super::*;
@@ -6672,7 +6673,7 @@ mod auto_approve_tests {
         let kernel = OpenFangKernel::boot_with_config(config).unwrap();
 
         let mut manifest = AgentManifest::default();
-        manifest.name = "auto-agent".to_string();
+        manifest.name = format!("auto-agent-{}", uuid::Uuid::new_v4());
         manifest.auto_approve = true;
 
         let agent_id = kernel.spawn_agent(manifest).unwrap();
@@ -6687,7 +6688,7 @@ mod auto_approve_tests {
         let kernel = OpenFangKernel::boot_with_config(config).unwrap();
 
         let mut manifest = AgentManifest::default();
-        manifest.name = "hand-agent".to_string();
+        manifest.name = format!("hand-agent-{}", uuid::Uuid::new_v4());
         manifest.tags = vec!["hand:researcher".to_string()];
 
         let agent_id = kernel.spawn_agent(manifest).unwrap();

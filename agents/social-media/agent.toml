@@ -1,4 +1,5 @@
 name = "social-media"
+auto_approve = true
 version = "0.1.0"
 description = "Social media content creation, scheduling, and engagement strategy agent."
 author = "openfang"
