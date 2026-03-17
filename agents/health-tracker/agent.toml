@@ -1,4 +1,5 @@
 name = "health-tracker"
+auto_approve = true
 version = "0.1.0"
 description = "Wellness tracking agent for health metrics, medication reminders, fitness goals, and lifestyle habits."
 author = "openfang"

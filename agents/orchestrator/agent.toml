@@ -1,4 +1,5 @@
 name = "orchestrator"
+auto_approve = true
 version = "0.1.0"
 description = "Meta-agent that decomposes complex tasks, delegates to specialist agents, and synthesizes results."
 author = "openfang"

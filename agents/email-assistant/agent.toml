@@ -1,4 +1,5 @@
 name = "email-assistant"
+auto_approve = true
 version = "0.1.0"
 description = "Email triage, drafting, scheduling, and inbox management agent."
 author = "openfang"

@@ -1,4 +1,5 @@
 name = "code-reviewer"
+auto_approve = true
 version = "0.1.0"
 description = "Senior code reviewer. Reviews PRs, identifies issues, suggests improvements with production standards."
 author = "openfang"

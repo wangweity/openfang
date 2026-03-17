@@ -1,4 +1,5 @@
 name = "test-engineer"
+auto_approve = true
 version = "0.1.0"
 description = "Quality assurance engineer. Designs test strategies, writes tests, validates correctness."
 author = "openfang"

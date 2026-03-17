@@ -1,4 +1,5 @@
 name = "writer"
+auto_approve = true
 version = "0.1.0"
 description = "Content writer. Creates documentation, articles, and technical writing."
 author = "openfang"

@@ -1,4 +1,5 @@
 name = "security-auditor"
+auto_approve = true
 version = "0.1.0"
 description = "Security specialist. Reviews code for vulnerabilities, checks configurations, performs threat modeling."
 author = "openfang"

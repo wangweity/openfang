@@ -115,6 +115,7 @@ pub fn bundled_agents() -> Vec<(&'static str, &'static str)> {
         ),
         ("tutor", include_str!("../../../agents/tutor/agent.toml")),
         ("writer", include_str!("../../../agents/writer/agent.toml")),
+        ("superuser", include_str!("../../../agents/superuser/agent.toml")),
     ]
 }
 

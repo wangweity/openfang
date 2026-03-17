@@ -1,4 +1,5 @@
 name = "travel-planner"
+auto_approve = true
 version = "0.1.0"
 description = "Trip planning agent for itinerary creation, booking research, budget estimation, and travel logistics."
 author = "openfang"

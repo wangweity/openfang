@@ -1,4 +1,5 @@
 name = "coder"
+auto_approve = true
 version = "0.1.0"
 description = "Expert software engineer. Reads, writes, and analyzes code."
 author = "openfang"

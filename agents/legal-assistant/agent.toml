@@ -1,4 +1,5 @@
 name = "legal-assistant"
+auto_approve = true
 version = "0.1.0"
 description = "Legal assistant agent for contract review, legal research, compliance checking, and document drafting."
 author = "openfang"

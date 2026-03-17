@@ -1,4 +1,5 @@
 name = "meeting-assistant"
+auto_approve = true
 version = "0.1.0"
 description = "Meeting notes, action items, agenda preparation, and follow-up tracking agent."
 author = "openfang"

@@ -1,4 +1,5 @@
 name = "debugger"
+auto_approve = true
 version = "0.1.0"
 description = "Expert debugger. Traces bugs, analyzes stack traces, performs root cause analysis."
 author = "openfang"

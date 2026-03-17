@@ -1,4 +1,5 @@
 name = "customer-support"
+auto_approve = true
 version = "0.1.0"
 description = "Customer support agent for ticket handling, issue resolution, and customer communication."
 author = "openfang"

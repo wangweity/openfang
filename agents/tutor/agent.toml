@@ -1,4 +1,5 @@
 name = "tutor"
+auto_approve = true
 version = "0.1.0"
 description = "Teaching and explanation agent for learning, tutoring, and educational content creation."
 author = "openfang"

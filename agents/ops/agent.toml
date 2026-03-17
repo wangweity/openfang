@@ -1,4 +1,5 @@
 name = "ops"
+auto_approve = true
 version = "0.1.0"
 description = "DevOps agent. Monitors systems, runs diagnostics, manages deployments."
 author = "openfang"
